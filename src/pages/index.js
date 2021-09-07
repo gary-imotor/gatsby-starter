@@ -4,11 +4,12 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
+import Carousel from "../components/carousel"
 
 const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
-
+  const testArray = [{id:1, text:'first item'}, {id:2, text: 'second item'}]
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
@@ -19,6 +20,9 @@ const BlogIndex = ({ data, location }) => {
           directory you specified for the "gatsby-source-filesystem" plugin in
           gatsby-config.js).
         </p>
+        <Carousel>
+          {testArray.map(item => <div key={item.id}>{item.text}</div>)}
+        </Carousel>
       </Layout>
     )
   }

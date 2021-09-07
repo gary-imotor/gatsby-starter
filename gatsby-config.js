@@ -11,6 +11,10 @@ module.exports = {
       twitter: `kylemathews`,
     },
   },
+  flags: {
+    DEV_SSR: false,
+    PRESERVE_WEBPACK_CACHE: true,
+  },
   plugins: [
     `gatsby-plugin-image`,
     {
@@ -126,5 +130,14 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /svgs/,
+        },
+      },
+    },
+    'gatsby-plugin-emotion',
   ],
 }

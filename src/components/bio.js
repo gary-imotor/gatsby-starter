@@ -8,6 +8,12 @@
 import * as React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import { css } from '@emotion/react'
+
+const textStyles = css`
+  font-size: 20px;
+  font-weight: normal;
+`
 
 const Bio = () => {
   const data = useStaticQuery(graphql`
@@ -31,7 +37,7 @@ const Bio = () => {
   const social = data.site.siteMetadata?.social
 
   return (
-    <div className="bio">
+    <div className="bio" css={[textStyles]}>
       <StaticImage
         className="bio-avatar"
         layout="fixed"
@@ -43,7 +49,7 @@ const Bio = () => {
         alt="Profile picture"
       />
       {author?.name && (
-        <p>
+        <p css={[textStyles]}>
           Written by <strong>{author.name}</strong> {author?.summary || null}
           {` `}
           <a href={`https://twitter.com/${social?.twitter || ``}`}>
